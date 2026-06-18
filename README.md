@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { overflow-x: hidden; max-width: 100%; }
 
   :root {
     --gold:       #B8924A;
@@ -43,6 +44,7 @@
     padding: 80px 24px 60px;
     position: relative;
     overflow: hidden;
+    width: 100%;
   }
 
   .hero::before {
@@ -160,7 +162,8 @@
   /* ── SEÇÕES GERAIS ── */
   section { padding: 80px 24px; }
 
-  .container { max-width: 960px; margin: 0 auto; }
+  .container { max-width: 960px; margin: 0 auto; width: 100%; }
+  img, video, iframe { max-width: 100%; height: auto; }
 
   .section-label {
     font-size: 11px;
@@ -202,7 +205,7 @@
 
   .pain-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
     gap: 20px;
     margin-top: 48px;
   }
@@ -236,7 +239,7 @@
 
   .comp-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
     gap: 16px;
     margin-top: 48px;
   }
@@ -282,7 +285,7 @@
 
   .results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
     gap: 20px;
     margin-top: 48px;
   }
@@ -315,7 +318,7 @@
 
   .plans-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 20px;
     margin-top: 48px;
   }
@@ -444,7 +447,7 @@
 
   .test-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
     gap: 20px;
     margin-top: 48px;
   }
@@ -604,9 +607,72 @@
   footer span { color: var(--gold); }
 
   /* ── RESPONSIVO ── */
-  @media (max-width: 600px) {
-    section { padding: 60px 20px; }
-    .plans-grid { grid-template-columns: 1fr; }
+  @media (max-width: 768px) {
+    /* HERO */
+    .hero { padding: 60px 20px 48px; }
+    .hero h1 { font-size: clamp(42px, 14vw, 64px); }
+    .hero-sub { font-size: 15px; }
+    .hero-pill { font-size: 11px; padding: 5px 12px; }
+    .bottle-img { width: min(220px, 70vw); }
+    .cta-hero { font-size: 14px; padding: 16px 32px; }
+
+    /* SEÇÕES */
+    section { padding: 56px 20px; }
+    .container { padding: 0; }
+    .section-title { font-size: clamp(26px, 7vw, 38px); }
+
+    /* GRIDS — tudo 1 coluna */
+    .pain-grid,
+    .comp-grid,
+    .results-grid,
+    .plans-grid,
+    .test-grid { grid-template-columns: 1fr; }
+
+    /* CARDS DE DOR */
+    .pain-card { padding: 22px 18px; }
+
+    /* COMPOSIÇÃO */
+    .comp-item { padding: 16px; }
+
+    /* RESULTADOS */
+    .result-card { padding: 24px 16px; }
+    .result-number { font-size: 40px; }
+
+    /* PLANOS */
+    .plan-card { padding: 28px 20px; }
+    .plan-price { font-size: 30px; }
+
+    /* DEPOIMENTOS */
+    .test-card { padding: 22px 18px; }
+    .test-text { font-size: 16px; }
+
+    /* GARANTIA */
+    .guarantee { padding: 60px 20px; }
+    .guarantee h2 { font-size: 30px; }
+
+    /* FAQ */
+    .faq-q { font-size: 14px; padding: 16px 18px; }
+    .faq-item.open .faq-a { padding: 0 18px 16px; }
+
+    /* CTA FINAL */
+    .cta-final { padding: 72px 20px; }
+    .cta-final h2 { font-size: clamp(28px, 8vw, 44px); }
+    .cta-final p { font-size: 15px; }
+
+    /* BADGE DE VAGA */
+    .vagas { font-size: 10px; }
+
+    /* PLANO BADGE */
+    .plan-badge { font-size: 10px; padding: 4px 14px; }
+  }
+
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 38px; }
+    .hero-pill-row { gap: 6px; }
+    .hero-pill { font-size: 10px; padding: 4px 10px; }
+    .cta-hero { font-size: 13px; padding: 14px 24px; width: 100%; text-align: center; }
+    .section-title { font-size: 24px; }
+    .plan-price { font-size: 26px; }
   }
 </style>
 </head>
